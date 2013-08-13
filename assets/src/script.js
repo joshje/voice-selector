@@ -8,7 +8,8 @@
             max: 5000
         },
         {
-            type: "blank"
+            type: "blank",
+            image: "assets/images/blank-1.jpg"
         },
         {
             type: "twitter",
@@ -18,7 +19,8 @@
             max: 6000
         },
         {
-            type: "blank"
+            type: "blank",
+            image: "assets/images/blank-2.jpg"
         },
         {
             type: "twitter",
@@ -36,11 +38,13 @@
         },
         {
             type: "multiplier",
-            value: 2
+            value: 2,
+            image: "assets/images/multiplier-x2.jpg"
         },
         {
             type: "multiplier",
-            value: 3
+            value: 3,
+            image: "assets/images/multiplier-x3.jpg"
         }
     ];
 
@@ -93,11 +97,11 @@
         for (var i = 0, len = RESULTS.length; i < len; ++i) {
             var result = RESULTS[i];
             slot += '<li>';
-            if (result.type == 'twitter') {
+            if (result.image) {
                 slot += '<img src="' + result.image + '">';
+            }
+            if (result.type == 'twitter') {
                 fakeTweet(result);
-            } else if (result.type == 'multiplier') {
-                slot += '&times;' + result.value;
             }
             slot += '</li>' + "\n";
         }
