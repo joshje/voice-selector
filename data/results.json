@@ -1,48 +1,90 @@
 [
     {
         "type": "twitter",
-        "name": "tomjones",
-        "image": "assets/results/tomjones.png",
+        "name": "tom",
+        "image": "assets/results/coach_tom.png",
         "min": 500,
         "max": 5000
     },
     {
         "type": "blank",
-        "image": "assets/results/blank.png"
+        "image": "assets/results/chair.png"
     },
     {
         "type": "twitter",
-        "name": "ErnestoSchmitt",
-        "image": "assets/results/tomjones.png",
+        "name": "danny",
+        "image": "assets/results/coach_danny.png",
         "min": 600,
         "max": 6000
     },
     {
         "type": "blank",
-        "image": "assets/results/blank.png"
+        "image": "assets/results/chair.png"
     },
     {
         "type": "twitter",
-        "name": "mbleyleben",
-        "image": "assets/results/tomjones.png",
+        "name": "jessie",
+        "image": "assets/results/coach_jessie.png",
         "min": 700,
         "max": 7000
     },
     {
         "type": "twitter",
-        "name": "endotoh",
-        "image": "assets/results/tomjones.png",
+        "name": "will",
+        "image": "assets/results/coach_will.png",
+        "min": 800,
+        "max": 8000
+    },
+    {
+        "type": "twitter",
+        "name": "chrisa",
+        "image": "assets/results/singer_chrisa.png",
+        "min": 800,
+        "max": 8000
+    },
+    {
+        "type": "twitter",
+        "name": "chrisw",
+        "image": "assets/results/singer_chrisw.png",
+        "min": 800,
+        "max": 8000
+    },
+    {
+        "type": "twitter",
+        "name": "josh",
+        "image": "assets/results/singer_josh.png",
+        "min": 800,
+        "max": 8000
+    },
+    {
+        "type": "twitter",
+        "name": "mike",
+        "image": "assets/results/singer_mike.png",
+        "min": 800,
+        "max": 8000
+    },
+    {
+        "type": "twitter",
+        "name": "morten",
+        "image": "assets/results/singer_morten.png",
+        "min": 800,
+        "max": 8000
+    },
+    {
+        "type": "twitter",
+        "name": "scarlet",
+        "image": "assets/results/singer_scarlet.png",
         "min": 800,
         "max": 8000
     },
     {
         "type": "multiplier",
         "value": 2,
-        "image": "assets/images/multiplier-x2.jpg"
+        "image": "assets/results/x2.png"
     },
     {
         "type": "multiplier",
         "value": 3,
-        "image": "assets/images/multiplier-x3.jpg"
+        "image": "assets/results/x3.png"
     }
 ]
