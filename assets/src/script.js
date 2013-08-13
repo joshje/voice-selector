@@ -21,12 +21,17 @@
     };
 
     var updateScore = function(slot) {
-        score += multiplier;
-        $score.text(score);
+        changeScore(multiplier);
         $('.slot').eq(slot).addClass('tweet');
         setTimeout(function() {
             $('.slot').eq(slot).removeClass('tweet');
         }, 800);
+    };
+
+    var changeScore = function(amount) {
+        score += amount;
+        if (score < 0) score = 0;
+        $score.text(score);
     };
 
     var fakeTweet = function(result) {
@@ -89,6 +94,7 @@
                 slots = [];
                 $slot.removeClass('tweet');
                 countdownReset();
+                changeScore(-20);
             },
             onEnd : function(numbers) {
                 slots = [];
@@ -108,7 +114,6 @@
             }
         });
 
-        $('.slots-play').click();
     };
 
 })(jQuery);
