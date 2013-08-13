@@ -15,8 +15,11 @@ body {
     color: #FFF;
 }
 .slots-header {
+    padding-top: 50px;
     .clearfix();
     &:before {
+        position: fixed;
+        top: 0;
         content: "";
         background: url(images/chrome.png) 0 0 no-repeat;
         background-size: 320px 50px;
@@ -98,7 +101,9 @@ body {
         display: block;
         width: auto;
         margin: 5px 0;
-        padding: 10px;
+        line-height: 1.6;
+        padding: 0 10px;
+        font-size: 24px;
         color: #FFF;
         text-decoration: none;
         text-align: center;
@@ -107,7 +112,7 @@ body {
         background: #A90000 url(images/button.png) 0 0 no-repeat;
         background-size: 600px 39px;
         border-radius: 5px;
-        text-shadow: 0 -3px rgba(0,0,0,0.25);
+        text-shadow: 0 -2px rgba(0,0,0,0.25);
         .transition(none);
         &.animate {
             .transition(background-position 60s linear);
