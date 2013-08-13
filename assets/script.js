@@ -482,9 +482,9 @@ jQuery.extend( jQuery.easing,
     var slots = [];
     var multiplier = 1;
     var $slots = $('.slots');
+    var $slotsPlay = $('.slots-play');
     var score = 0;
     var countdownTimer;
-    var $countdown = $('.countdown');
     var $score = $('.score');
 
     var randomInterval = function(from, to) {
@@ -513,19 +513,29 @@ jQuery.extend( jQuery.easing,
         }, delay);
     };
 
+    $slotsPlay.on('click', function(e) {
+        e.preventDefault();
+    });
+
     var countdownStart = function() {
-        clearTimeout(countdownTimer);
-        $countdown.addClass('reset');
+        countdownReset();
         setTimeout(function() {
-            $countdown.removeClass('reset');
-        }, 1);
+            $slotsPlay.addClass('animate');
+        }, 2);
+        setTimeout(function() {
+            $slotsPlay.css({'background-position': '-300px 0'});
+        }, 3);
         countdownTimer = setTimeout(function() {
-            $('.slots-play').click();
+            $slotsPlay.click();
+            countdownReset();
         }, 60 * 1000);
     };
     var countdownReset = function() {
         clearTimeout(countdownTimer);
-        $countdown.addClass('reset');
+        $slotsPlay.removeClass('animate');
+        setTimeout(function() {
+            $slotsPlay.css({'background-position': '0 0'});
+        }, 1);
     };
 
     var init = function() {

@@ -1,37 +1,37 @@
 [
     {
         "type": "twitter",
-        "name": "anthonyrose",
-        "image": "https://si0.twimg.com/profile_images/1599447732/Anthony1-small-square.JPG",
+        "name": "tomjones",
+        "image": "assets/results/tomjones.png",
         "min": 500,
         "max": 5000
     },
     {
         "type": "blank",
-        "image": "assets/images/blank-1.jpg"
+        "image": "assets/results/blank.png"
     },
     {
         "type": "twitter",
         "name": "ErnestoSchmitt",
-        "image": "https://si0.twimg.com/profile_images/1600852722/image.jpg",
+        "image": "assets/results/tomjones.png",
         "min": 600,
         "max": 6000
     },
     {
         "type": "blank",
-        "image": "assets/images/blank-2.jpg"
+        "image": "assets/results/blank.png"
     },
     {
         "type": "twitter",
         "name": "mbleyleben",
-        "image": "https://si0.twimg.com/profile_images/88472831/ImgSheet_8_cr.jpg",
+        "image": "assets/results/tomjones.png",
         "min": 700,
         "max": 7000
     },
     {
         "type": "twitter",
         "name": "endotoh",
-        "image": "https://si0.twimg.com/profile_images/1661445920/alex-profile-pic.jpg",
+        "image": "assets/results/tomjones.png",
         "min": 800,
         "max": 8000
     },

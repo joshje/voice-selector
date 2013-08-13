@@ -2,34 +2,59 @@
 @import 'bootstrap/variables.less';
 @import 'bootstrap/mixins.less';
 @import 'fonts.less';
-
 body {
+    margin: 0;
+    padding: 0;
+}
+.slots-wrap {
     font-family: @sansFontFamily;
     width: 320px;
     margin: 0 auto;
     padding: 0;
+    background: #500001 url(images/background.jpg) 0 0 repeat-y;
+    color: #FFF;
 }
 .slots-header {
-    padding: 10px;
     .clearfix();
+    &:before {
+        content: "";
+        background: url(images/chrome.png) 0 0 no-repeat;
+        background-size: 320px 50px;
+        width: 320px;
+        height: 50px;
+    }
     .heading {
-        .fagoMedium();
-        float: left;
+        background: rgba(0,0,0,0.7);
+        text-align: center;
+        margin: 35px 0 0;
+        img {
+            width: 145px;
+            margin: -20px 0;
+        }
     }
-    .slots-play {
-        float: right;
-        margin: 30px 0;
-    }
+
 
 }
 .slots-content {
-    padding: 10px;
+    background: rgba(0,0,0,0.5);
+    padding: 30px 10px 10px;
+    margin: 0 0 15px;
+    .slots-buzz {
+        text-align: center;
+        .fagoMedium();
+        font-size: 24px;
+        text-transform: uppercase;
+        color: #C0B3B3;
+        .score {
+            color: #FFF;
+        }
+    }
     .jSlots-wrapper {
         overflow: hidden;
-        width: 302px;
-        height: 100px;
+        width: 300px;
+        height: 120px;
+        margin: 10px 0;
         display: block;
-        border: 1px solid #999;
     }
     .slot {
         display: inline-block;
@@ -38,23 +63,22 @@ body {
         list-style: none;
         li {
             position: relative;
-            width: 100px;
-            height: 100px;
+            width: 90px;
+            height: 120px;
+            margin-left: 15px;
             line-height: 100px;
             text-align: center;
-            border-left: 1px solid #999;
-            background: #DDD;
             font-size: 20px;
             text-transform: uppercase;
             &.blank {
             }
         }
+        &:first-child li {
+            margin-left: 0;
+        }
         img {
             display: block;
             width: 100%;
-        }
-        &:first-child li {
-            border-left: none;
         }
         &.tweet li:before {
             content: '';
@@ -68,15 +92,25 @@ body {
             background-size: 100px 100px;
         }
     }
-}
-.countdown {
-    width: 0;
-    height: 2px;
-    background-color: #F00;
-    .transition(~"width 60s linear, background-color 60s linear");
-    &.reset {
-        width: 304px;
-        background-color: #10FF00;
+    .slots-play {
+        font-family: @sansFontFamily;
+        font-weight: bold;
+        display: block;
+        width: auto;
+        margin: 5px 0;
+        padding: 10px;
+        color: #FFF;
+        text-decoration: none;
+        text-align: center;
+        text-transform: uppercase;
+        border: 2px solid #A68080;
+        background: #A90000 url(images/button.png) 0 0 no-repeat;
+        background-size: 600px 39px;
+        border-radius: 5px;
+        text-shadow: 0 -3px rgba(0,0,0,0.25);
         .transition(none);
+        &.animate {
+            .transition(background-position 60s linear);
+        }
     }
 }
