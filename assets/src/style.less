@@ -1,0 +1,32 @@
+body {
+    font-family: sans-serif;
+}
+.slots {
+    .jSlots-wrapper {
+        overflow: hidden;
+        height: 100px;
+        display: inline-block;
+        border: 1px solid #999;
+    }
+    .slot {
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        li {
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            border-left: 1px solid #999;
+            background: #DDD;
+            &.blank {
+            }
+        }
+        &:first-child li {
+            border-left: none;
+        }
+        img {
+            max-width: 100%;
+        }
+    }
+}

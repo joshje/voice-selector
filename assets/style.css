@@ -1,0 +1,1 @@
+body{font-family:sans-serif}.slots .jSlots-wrapper{overflow:hidden;height:100px;display:inline-block;border:1px solid #999}.slots .slot{display:inline-block;margin:0;padding:0;list-style:none}.slots .slot li{width:100px;height:100px;text-align:center;border-left:1px solid #999;background:#DDD}.slots .slot:first-child li{border-left:none}.slots .slot img{max-width:100%}
