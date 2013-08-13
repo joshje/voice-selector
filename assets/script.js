@@ -470,12 +470,7 @@ jQuery.extend( jQuery.easing,
 
 })(jQuery);
 ;(function($) {
-
-    var slots = [];
-    var $slots = $('.slots');
-    var score = 0;
-    var $score = $('.score');
-    var results = [
+    var RESULTS = [
         {
             type: "twitter",
             name: "anthonyrose",
@@ -511,16 +506,29 @@ jQuery.extend( jQuery.easing,
             max: 8000
         },
         {
-            type: "blank"
+            type: "multiplier",
+            value: 2
+        },
+        {
+            type: "multiplier",
+            value: 3
         }
     ];
+
+    var slots = [];
+    var multiplier = 1;
+    var $slots = $('.slots');
+    var score = 0;
+    var countdownTimer;
+    var $countdown = $('.countdown');
+    var $score = $('.score');
 
     var randomInterval = function(from, to) {
         return Math.floor(Math.random()*(to-from+1)+from);
     };
 
     var updateScore = function(slot) {
-        score++;
+        score += multiplier;
         $score.text(score);
         $('.slot').eq(slot).addClass('tweet');
         setTimeout(function() {
@@ -536,14 +544,31 @@ jQuery.extend( jQuery.easing,
         }, delay);
     };
 
+    var countdownStart = function() {
+        clearTimeout(countdownTimer);
+        $countdown.addClass('reset');
+        setTimeout(function() {
+            $countdown.removeClass('reset');
+        }, 1);
+        countdownTimer = setTimeout(function() {
+            $('.slots-play').click();
+        }, 60 * 1000);
+    };
+    var countdownReset = function() {
+        clearTimeout(countdownTimer);
+        $countdown.addClass('reset');
+    };
+
     var init = function() {
         var slot = '<ul class="slot">' + "\n";
-        for (var i = 0, len = results.length; i < len; ++i) {
-            var result = results[i];
+        for (var i = 0, len = RESULTS.length; i < len; ++i) {
+            var result = RESULTS[i];
             slot += '<li>';
             if (result.type == 'twitter') {
                 slot += '<img src="' + result.image + '">';
                 fakeTweet(result);
+            } else if (result.type == 'multiplier') {
+                slot += '&times;' + result.value;
             }
             slot += '</li>' + "\n";
         }
@@ -570,17 +595,23 @@ jQuery.extend( jQuery.easing,
                 // Stop counting tweets
                 slots = [];
                 $slot.removeClass('tweet');
+                countdownReset();
             },
             onEnd : function(numbers) {
                 slots = [];
+                multiplier = 1;
                 for (var slot = numbers.length - 1; slot >= 0; slot--) {
-                    var result = results[numbers[slot]-1];
-                    if (result.type == 'twitter') {
+                    var result = RESULTS[numbers[slot]-1];
+                    if (result && result.type == 'twitter') {
                         slots[slot] = result.name;
                     } else {
+                        if (result.type == 'multiplier') {
+                            multiplier *= result.value;
+                        }
                         slots[slot] = null;
                     }
                 }
+                countdownStart();
             }
         });
 
