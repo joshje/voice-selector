@@ -1,0 +1,48 @@
+[
+    {
+        "type": "twitter",
+        "name": "anthonyrose",
+        "image": "https://si0.twimg.com/profile_images/1599447732/Anthony1-small-square.JPG",
+        "min": 500,
+        "max": 5000
+    },
+    {
+        "type": "blank",
+        "image": "assets/images/blank-1.jpg"
+    },
+    {
+        "type": "twitter",
+        "name": "ErnestoSchmitt",
+        "image": "https://si0.twimg.com/profile_images/1600852722/image.jpg",
+        "min": 600,
+        "max": 6000
+    },
+    {
+        "type": "blank",
+        "image": "assets/images/blank-2.jpg"
+    },
+    {
+        "type": "twitter",
+        "name": "mbleyleben",
+        "image": "https://si0.twimg.com/profile_images/88472831/ImgSheet_8_cr.jpg",
+        "min": 700,
+        "max": 7000
+    },
+    {
+        "type": "twitter",
+        "name": "endotoh",
+        "image": "https://si0.twimg.com/profile_images/1661445920/alex-profile-pic.jpg",
+        "min": 800,
+        "max": 8000
+    },
+    {
+        "type": "multiplier",
+        "value": 2,
+        "image": "assets/images/multiplier-x2.jpg"
+    },
+    {
+        "type": "multiplier",
+        "value": 3,
+        "image": "assets/images/multiplier-x3.jpg"
+    }
+]
