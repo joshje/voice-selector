@@ -67,6 +67,19 @@
         }, 1);
     };
 
+    var setMultiplier = function(value) {
+        multiplier = value;
+        $slots.attr('data-multiplier', multiplier);
+    };
+
+    var resetMultiplier = function() {
+        setMultiplier(1);
+    };
+
+    var increaseMultiplier = function(amount) {
+        setMultiplier(multiplier * amount);
+    };
+
     var init = function() {
         var slot = '<ul class="slot">' + "\n";
         for (var i = 0, len = results.length; i < len; ++i) {
@@ -108,14 +121,14 @@
             },
             onEnd : function(numbers) {
                 slots = [];
-                multiplier = 1;
+                resetMultiplier();
                 for (var slot = numbers.length - 1; slot >= 0; slot--) {
                     var result = results[numbers[slot]-1];
                     if (result && result.type == 'twitter') {
                         slots[slot] = result.name;
                     } else {
                         if (result.type == 'multiplier') {
-                            multiplier *= result.value;
+                            increaseMultiplier(result.value);
                         }
                         slots[slot] = null;
                     }
