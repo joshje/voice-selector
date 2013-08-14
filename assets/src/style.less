@@ -111,6 +111,7 @@ body {
         background-image: url(results/tweetx3.png);
     }
     .slots-play {
+        position: relative;
         font-family: @sansFontFamily;
         font-weight: bold;
         display: block;
@@ -124,13 +125,32 @@ body {
         text-align: center;
         text-transform: uppercase;
         border: 2px solid #A68080;
-        background: #A90000 url(images/button.png) 0 0 no-repeat;
-        background-size: 600px 39px;
+        background: #A90000 url(images/button.png) 0 0 repeat-x;
+        background-size: 1px 39px;
         border-radius: 5px;
         text-shadow: 0 -2px rgba(0,0,0,0.25);
-        .transition(none);
-        &.animate {
-            .transition(background-position 60s linear);
+        overflow: hidden;
+        .text {
+            position: relative;
+            z-index: 100;
+        }
+        .countdown {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            border-radius: 4px;
+            background: rgba(0,0,0,0.25);
+            .transition(none);
+            .translate3d(0,0,0);
+            &.animate {
+                width: 0;
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+                .transition(width 60s linear);
+            }
         }
     }
 }

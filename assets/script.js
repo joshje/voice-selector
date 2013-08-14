@@ -483,6 +483,7 @@ jQuery.extend( jQuery.easing,
     var multiplier = 1;
     var $slots = $('.slots');
     var $slotsPlay = $('.slots-play');
+    var $countdown = $('.countdown', $slotsPlay);
     var score = 0;
     var countdownTimer;
     var $score = $('.score');
@@ -520,11 +521,8 @@ jQuery.extend( jQuery.easing,
     var countdownStart = function() {
         countdownReset();
         setTimeout(function() {
-            $slotsPlay.addClass('animate');
-        }, 2);
-        setTimeout(function() {
-            $slotsPlay.css({'background-position': '-300px 0'});
-        }, 3);
+            $countdown.addClass('animate');
+        }, 1);
         countdownTimer = setTimeout(function() {
             $slotsPlay.click();
             countdownReset();
@@ -532,10 +530,7 @@ jQuery.extend( jQuery.easing,
     };
     var countdownReset = function() {
         clearTimeout(countdownTimer);
-        $slotsPlay.removeClass('animate');
-        setTimeout(function() {
-            $slotsPlay.css({'background-position': '0 0'});
-        }, 1);
+        $countdown.removeClass('animate');
     };
 
     var setMultiplier = function(value) {
