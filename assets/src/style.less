@@ -2,6 +2,9 @@
 @import 'bootstrap/variables.less';
 @import 'bootstrap/mixins.less';
 @import 'fonts.less';
+html, body {
+    height: 100%;
+}
 body {
     margin: 0;
     padding: 0;
@@ -9,6 +12,7 @@ body {
 .slots-wrap {
     font-family: @sansFontFamily;
     width: 320px;
+    min-height: 100%;
     margin: 0 auto;
     padding: 0;
     background: #500001 url(images/background.jpg) 0 0 repeat-y;
@@ -122,7 +126,7 @@ body {
         text-align: center;
         text-transform: uppercase;
         border: 2px solid #A68080;
-        background: #A90000 url(images/button.png) 0 0 repeat-x;
+        background: #8D0000 url(images/button.png) 0 0 repeat-x;
         background-size: 1px 39px;
         border-radius: 5px;
         text-shadow: 0 -2px rgba(0,0,0,0.25);
