@@ -13,19 +13,15 @@ body {
     padding: 0;
     background: #500001 url(images/background.jpg) 0 0 repeat-y;
     color: #FFF;
+    &--widget {
+        width: 100%;
+        max-width: 345px;
+        height: 260px;
+        padding-top: 40px;
+    }
 }
 .slots-header {
-    padding-top: 50px;
     .clearfix();
-    &:before {
-        position: fixed;
-        top: 0;
-        content: "";
-        background: url(images/chrome.png) 0 0 no-repeat;
-        background-size: 320px 50px;
-        width: 320px;
-        height: 50px;
-    }
     .heading {
         background: rgba(0,0,0,0.7);
         text-align: center;
@@ -110,6 +106,7 @@ body {
     .slots[data-multiplier="9"] .tweet li:before {
         background-image: url(results/tweet_x9.png);
     }
+    .slots-button,
     .slots-play {
         position: relative;
         font-family: @sansFontFamily;
