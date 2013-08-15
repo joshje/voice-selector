@@ -11,7 +11,8 @@ body {
 }
 .slots-wrap {
     font-family: @sansFontFamily;
-    width: 320px;
+    width: 100%;
+    max-width: 400px;
     min-height: 100%;
     margin: 0 auto;
     padding: 0;
@@ -23,6 +24,9 @@ body {
         max-width: 345px;
         height: 260px;
         padding-top: 40px;
+        .slots-content .slots-button {
+            margin: 20px auto 10px;
+        }
     }
 }
 .slots-header {
@@ -41,9 +45,20 @@ body {
 }
 .slots-content {
     background: rgba(0,0,0,0.5);
-    padding: 30px 10px 10px;
     margin: 0 0 15px;
+    padding: 5% 10px;
+    text-align: center;
+    .subheading {
+        background: rgba(0,0,0,0.4);
+        .fagoMedium();
+        font-size: 24px;
+        text-transform: uppercase;
+        color: #FFF;
+        padding: 10px;
+        margin: -5% -10px 5%;
+    }
     .slots-buzz {
+        margin-top: 20px;
         text-align: center;
         .fagoMedium();
         font-size: 24px;
@@ -57,7 +72,7 @@ body {
         overflow: hidden;
         width: 300px;
         height: 123px;
-        margin: 10px 0;
+        margin: 10px auto;
         display: block;
     }
     .slot {
@@ -117,8 +132,8 @@ body {
         font-family: @sansFontFamily;
         font-weight: bold;
         display: block;
-        width: auto;
-        margin: 5px 0;
+        width: 280px;
+        margin: 5px auto;
         line-height: 1.6;
         padding: 0 10px;
         font-size: 24px;
@@ -154,5 +169,11 @@ body {
                 .transition(width 60s linear);
             }
         }
+    }
+    .slots-realtime {
+        display: inline-block;
+        padding-right: 35px;
+        background: url(images/bird.png) right 40% no-repeat;
+        background-size: 22px 18px;
     }
 }
