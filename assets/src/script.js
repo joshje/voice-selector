@@ -11,6 +11,7 @@
     var slots = [];
     var multiplier = 1;
     var $slots = $('.slots');
+    var $slot;
     var $tweets = $('.slot-tweets');
     var $tweetSlots = $('li', $tweets);
     var $slotsPlay = $('.slots-play');
@@ -18,6 +19,46 @@
     var score = 0;
     var countdownTimer;
     var $score = $('.score');
+
+    var generateSlot = function() {
+        var slot = '<ul class="slot">' + "\n";
+        for (var i = 0, len = results.length; i < len; ++i) {
+            var result = results[i];
+            slot += '<li>';
+            if (result.image) {
+                slot += '<img src="' + result.image + '">';
+            }
+            if (result.type == 'twitter') {
+                fakeTweet(result);
+            }
+            slot += '</li>' + "\n";
+        }
+        slot += '</ul>' + "\n";
+        return slot;
+    };
+
+    var generateAudio = function(src) {
+        var audio = document.createElement('audio');
+        if (! audio.canPlayType) return false;
+        var canPlayMP3 = audio.canPlayType('audio/mpeg;').replace(/no/, '');
+        var canPlayOgg = audio.canPlayType('audio/ogg; codecs="vorbis"').replace(/no/, '');
+        if (! (canPlayMP3 || canPlayOgg)) return false;
+        audio.style.display = 'none';
+        audio.setAttribute('preload', 'true');
+        var s = document.createElement('source');
+        s.src = src;
+        if (! canPlayMP3) {
+            s.src = s.src.replace('mp3', 'ogv');
+        }
+        audio.appendChild(s);
+        document.getElementsByTagName('body')[0].appendChild(audio);
+        return audio;
+    };
+    var audioSlots = [];
+    for (var i = 2; i >= 0; i--) {
+        audioSlots.push(generateAudio('assets/audio/switch.mp3'));
+    };
+    var audioSlotsIndex = 2;
 
     var randomInterval = function(from, to) {
         return Math.floor(Math.random()*(to-from+1)+from);
@@ -79,30 +120,44 @@
         setMultiplier(multiplier * amount);
     };
 
-    var init = function() {
-        var slot = '<ul class="slot">' + "\n";
-        for (var i = 0, len = results.length; i < len; ++i) {
-            var result = results[i];
-            slot += '<li>';
-            if (result.image) {
-                slot += '<img src="' + result.image + '">';
-            }
-            if (result.type == 'twitter') {
-                fakeTweet(result);
-            }
-            slot += '</li>' + "\n";
-        }
-        slot += '</ul>' + "\n";
+    var slotsStart = function() {
+        slots = [];
+        $slot.removeClass('tweet');
+        countdownReset();
+        changeScore(-20);
+    };
 
-        $slots.append(slot).on('tweet', function(e, result) {
-            for (var i = slots.length - 1; i >= 0; i--) {
-                if (slots[i] && slots[i] == result.name) {
-                    updateScore(i);
+    var slotsEnd = function(numbers) {
+        slots = [];
+        resetMultiplier();
+        for (var slot = numbers.length - 1; slot >= 0; slot--) {
+            var result = results[numbers[slot]-1];
+            if (result && result.type == 'twitter') {
+                slots[slot] = result.name;
+            } else {
+                if (result.type == 'multiplier') {
+                    increaseMultiplier(result.value);
                 }
+                slots[slot] = null;
             }
-        });
+        }
+        countdownStart();
+    };
 
-        var $slot = $('.slot', $slots);
+    var slotsSlot = function() {
+        if (audioSlots[audioSlotsIndex]) {
+            audioSlots[audioSlotsIndex].play();
+        }
+        audioSlotsIndex--;
+        if (audioSlotsIndex < 0) {
+            audioSlotsIndex = 2;
+        }
+    };
+
+    var init = function() {
+        var slot = generateSlot();
+        $slots.append(slot);
+        $slot = $('.slot', $slots);
 
         $slot.jSlots({
             number : 3,
@@ -111,28 +166,16 @@
             easing : 'easeOutSine',
             time : 3000,
             loops : 6,
-            onStart : function() {
-                // Stop counting tweets
-                slots = [];
-                $slot.removeClass('tweet');
-                countdownReset();
-                changeScore(-20);
-            },
-            onEnd : function(numbers) {
-                slots = [];
-                resetMultiplier();
-                for (var slot = numbers.length - 1; slot >= 0; slot--) {
-                    var result = results[numbers[slot]-1];
-                    if (result && result.type == 'twitter') {
-                        slots[slot] = result.name;
-                    } else {
-                        if (result.type == 'multiplier') {
-                            increaseMultiplier(result.value);
-                        }
-                        slots[slot] = null;
-                    }
+            onStart : slotsStart,
+            onEnd : slotsEnd,
+            onSlot : slotsSlot
+        });
+
+        $slots.on('tweet', function(e, result) {
+            for (var i = slots.length - 1; i >= 0; i--) {
+                if (slots[i] && slots[i] == result.name) {
+                    updateScore(i);
                 }
-                countdownStart();
             }
         });
 

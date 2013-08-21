@@ -177,7 +177,9 @@
         };
 
         base.checkWinner = function(endNum, slot) {
-
+            if ( $.isFunction( base.options.onSlot ) ) {
+                base.options.onSlot(endNum, slot);
+            }
             base.doneCount++;
             // set the slot number to whatever it ended on
             slot.number = endNum;
