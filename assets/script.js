@@ -492,6 +492,8 @@ jQuery.extend( jQuery.easing,
     var score = 0;
     var countdownTimer;
     var $score = $('.score');
+    var $mute = $('.mute');
+    var muted = false;
 
     var generateSlot = function() {
         var slot = '<ul class="slot">' + "\n";
@@ -618,7 +620,7 @@ jQuery.extend( jQuery.easing,
     };
 
     var slotsSlot = function() {
-        if (audioSlots[audioSlotsIndex]) {
+        if (!muted && audioSlots[audioSlotsIndex]) {
             audioSlots[audioSlotsIndex].play();
         }
         audioSlotsIndex--;
@@ -651,6 +653,12 @@ jQuery.extend( jQuery.easing,
                 }
             }
         });
+
+        $mute.on('click', function(e) {
+            $mute.toggleClass('muted');
+            muted = !muted;
+            e.preventDefault();
+        })
 
     };
 

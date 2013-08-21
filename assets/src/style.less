@@ -30,6 +30,7 @@ body {
     }
 }
 .slots-header {
+    position: relative;
     .clearfix();
     .heading {
         background: rgba(0,0,0,0.7);
@@ -40,7 +41,22 @@ body {
             margin: -20px 0;
         }
     }
-
+    .mute {
+        display: block;
+        position: absolute;
+        top: 44px;
+        right: 10px;
+        width: 32px;
+        height: 32px;
+        text-indent: 100%;
+        background: url(images/mute.png) 0 0 no-repeat;
+        &.muted {
+            background-position: 0 -32px;
+        }
+        &:hover {
+            opacity: 0.8;
+        }
+    }
 
 }
 .slots-content {
