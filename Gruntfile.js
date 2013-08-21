@@ -32,8 +32,14 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      files: ['assets/src/*'],
-      tasks: ['less', 'concat', 'uglify']
+      css: {
+        files: ['assets/src/*.css'],
+        tasks: ['less']
+      },
+      js: {
+        files: ['assets/src/*.js'],
+        tasks: ['concat', 'uglify']
+      }
     }
   });
 
@@ -42,6 +48,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-less');
 
-  grunt.registerTask('default', ['less', 'concat', 'uglify']);
+  grunt.registerTask('build', ['less', 'concat', 'uglify']);
+  grunt.registerTask('default', ['build']);
 
 };

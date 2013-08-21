@@ -482,6 +482,8 @@ jQuery.extend( jQuery.easing,
     var slots = [];
     var multiplier = 1;
     var $slots = $('.slots');
+    var $tweets = $('.slot-tweets');
+    var $tweetSlots = $('li', $tweets);
     var $slotsPlay = $('.slots-play');
     var $countdown = $('.countdown', $slotsPlay);
     var score = 0;
@@ -493,11 +495,13 @@ jQuery.extend( jQuery.easing,
     };
 
     var updateScore = function(slot) {
-        changeScore(multiplier);
-        $('.slot').eq(slot).addClass('tweet');
+        $tweetSlots.eq(slot).removeClass('tweet');
         setTimeout(function() {
-            $('.slot').eq(slot).removeClass('tweet');
-        }, 800);
+            $tweetSlots.eq(slot).addClass('tweet');
+        }, 1);
+        setTimeout(function() {
+            changeScore(multiplier);
+        }, 600);
     };
 
     var changeScore = function(amount) {
@@ -535,7 +539,7 @@ jQuery.extend( jQuery.easing,
 
     var setMultiplier = function(value) {
         multiplier = value;
-        $slots.attr('data-multiplier', multiplier);
+        $tweets.attr('data-multiplier', multiplier);
     };
 
     var resetMultiplier = function() {
