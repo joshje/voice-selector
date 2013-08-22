@@ -491,7 +491,8 @@ jQuery.extend( jQuery.easing,
     var $countdown = $('.countdown', $slotsPlay);
     var score = 0;
     var countdownTimer;
-    var $score = $('.score');
+    var $buzz = $('.slots-buzz');
+    var $score = $('.score', $buzz);
     var $mute = $('.mute');
     var muted = false;
 
@@ -546,13 +547,28 @@ jQuery.extend( jQuery.easing,
         }, 1);
         setTimeout(function() {
             changeScore(multiplier);
-        }, 600);
+        }, 400);
+        setTimeout(function() {
+            $tweetSlots.eq(slot).removeClass('tweet');
+        }, 800);
     };
 
     var changeScore = function(amount) {
+        var oldScore = score;
         score += amount;
-        if (score < 0) score = 0;
-        $score.text(score);
+        if (score < 0) {
+            score = 0;
+        }
+        if (oldScore == score) return;
+        setTimeout(function() {
+           $buzz.addClass('updated');
+        }, 1);
+        setTimeout(function() {
+            $score.text(score);
+        }, 150);
+        setTimeout(function() {
+           $buzz.removeClass('updated');
+        }, 500);
     };
 
     var fakeTweet = function(result) {
@@ -597,7 +613,6 @@ jQuery.extend( jQuery.easing,
 
     var slotsStart = function() {
         slots = [];
-        $slot.removeClass('tweet');
         countdownReset();
         changeScore(-20);
     };

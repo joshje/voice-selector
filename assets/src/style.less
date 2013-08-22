@@ -49,6 +49,7 @@ body {
         width: 32px;
         height: 32px;
         text-indent: 100%;
+        overflow: hidden;
         background: url(images/mute.png) 0 0 no-repeat;
         &.muted {
             background-position: 0 -32px;
@@ -80,8 +81,22 @@ body {
         font-size: 24px;
         text-transform: uppercase;
         color: #C0B3B3;
+        .transition(color 0.3s linear);
         .score {
+            display: block;
+            margin-left: 5px;
             color: #FFF;
+            .scale(1);
+            -webkit-transition: -webkit-transform 0.15s linear;
+            -moz-transition: -moz-transform 0.15s linear;
+            transition: transform 0.15s linear;
+        }
+        &.updated {
+            color: #FFF;
+            .transition(none);
+        }
+        &.updated .score {
+            .scale(1.5);
         }
     }
     .jSlots-wrapper {
@@ -212,19 +227,19 @@ body {
 
 @-webkit-keyframes tweet {
   from {
-    .transform(~"translate(0,0) scale(0.1,0.1)");
+    .transform(~"translate(0,-20px) scale(0.1,0.1)");
     opacity: 0;
   }
   30% {
-    .transform(~"translate(0,-30px) scale(1,1)");
+    .transform(~"translate(0,-41px) scale(1,1)");
     opacity: 1;
   }
   70% {
-    .transform(~"translate(0,-100px) scale(0.5,0.5)");
+    .transform(~"translate(0,-120px) scale(0.5,0.5)");
     opacity: 1;
   }
   to {
-    .transform(~"translate(0,-100px) scale(0.5,0.5)");
+    .transform(~"translate(0,-120px) scale(0,0)");
     opacity: 0;
   }
 }
