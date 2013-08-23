@@ -483,11 +483,13 @@ jQuery.extend( jQuery.easing,
 
     var slots = [];
     var multiplier = 1;
+    var jSlots;
     var $slots = $('.slots');
     var $slot;
     var $tweets = $('.slot-tweets');
     var $tweetSlots = $('li', $tweets);
     var $slotsPlay = $('.slots-play');
+    var $slotsPlayHidden = $('.slots-play-hidden');
     var $countdown = $('.countdown', $slotsPlay);
     var score = 0;
     var countdownTimer;
@@ -580,6 +582,8 @@ jQuery.extend( jQuery.easing,
     };
 
     $slotsPlay.on('click', function(e) {
+        changeScore(-20);
+        $slotsPlayHidden.click();
         e.preventDefault();
     });
 
@@ -589,7 +593,7 @@ jQuery.extend( jQuery.easing,
             $countdown.addClass('animate');
         }, 1);
         countdownTimer = setTimeout(function() {
-            $slotsPlay.click();
+            $slotsPlayHidden.click();
             countdownReset();
         }, 60 * 1000);
     };
@@ -614,7 +618,6 @@ jQuery.extend( jQuery.easing,
     var slotsStart = function() {
         slots = [];
         countdownReset();
-        changeScore(-20);
     };
 
     var slotsEnd = function(numbers) {
@@ -649,10 +652,10 @@ jQuery.extend( jQuery.easing,
         $slots.append(slot);
         $slot = $('.slot', $slots);
 
-        $slot.jSlots({
+        jSlots = $slot.jSlots({
             number : 3,
             winnerNumber : 1,
-            spinner : '.slots-play',
+            spinner : '.slots-play-hidden',
             easing : 'easeOutSine',
             time : 3000,
             loops : 6,
